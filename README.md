@@ -8,3 +8,4 @@ GOLDEN RULES
 3. No rootkits
 4. No swatting
 5. NO PAIN NO GAIN
+6. You do not talk about Bulletproof Future

@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<Response>
-  <Say voice="alice">Hello, friend.</Say>
-  <Play>interference.mp3</Play>
-  <Say voice="alice">Goodbye, friend.</Say>
-</Response>

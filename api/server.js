@@ -1,5 +1,10 @@
+var fs = require("fs")
+
+var config = JSON.parse(fs.readFileSync("config.json"))
+
 const accountSid = 'AC5939b954c24cb577caa74dd703170f63';
-const authToken = '304534b495312c10ae09e69131970921';
+const authToken = config["twilio-auth-token"] 
+console.log(authToken)
 const client = require('twilio')(accountSid, authToken);
 
 var express = require("express");

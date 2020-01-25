@@ -9,8 +9,9 @@ var num = '+447871239341';
 
 client.calls
       .create({
-         twiml: '<Response><Say>Seven days!</Say></Response>',
-         from: '+12014743543',
+         twiml: '<Response><Say voice="alice">Hello, friend.</Say><Play></Play><Say voice="alice">Goodbye, friend.</Say></Response>',
+         //url: 'callTest.xml',
+		 from: '+12014743543',
          to: num
        })
       .then(call => console.log(call.sid));

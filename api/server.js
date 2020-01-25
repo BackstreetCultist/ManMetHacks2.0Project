@@ -13,13 +13,27 @@ app.listen(port);
 
 app.get("/threaten/:threatID", function(req,res){
     res.send("threat level: "+req.params['threatID'])
-	client.messages
-	  .create({
-		 body: 'Monkey loves you',
-		 from: '+12014743543',
-		 to: num
-	   })
-	  .then(message => console.log(message.sid));
+	
+	switch(req.params['threatID']){
+		case '3':
+			client.messages
+			  .create({
+				 body: 'Monkey loves you',
+				 from: '+12014743543',
+				 to: num
+			   })
+			  .then(message => console.log(message.sid));
+			break;
+		case '4':
+			client.calls
+			  .create({
+				 twiml: '<Response><Say voice="alice">Hello, friend.</Say><Play></Play><Say voice="alice">Goodbye, friend.</Say></Response>',
+				 from: '+12014743543',
+				 to: num
+			   })
+			  .then(call => console.log(call.sid));
+			break;
+	}
 })
 
 app.get("/twitter/:threatID", function(req,res){

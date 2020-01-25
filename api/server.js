@@ -5,13 +5,13 @@ const client = require('twilio')(accountSid, authToken);
 var express = require("express");
 var num = '+447871239341';
 
-app = express(); 
+app = express();
 
 port =  8080;
 
 app.listen(port);
 
-app.post("/threaten/:threatID", function(req,res){
+app.get("/threaten/:threatID", function(req,res){
     res.send("threat level: "+req.params['threatID'])
 	client.messages
 	  .create({
@@ -22,7 +22,7 @@ app.post("/threaten/:threatID", function(req,res){
 	  .then(message => console.log(message.sid));
 })
 
-app.post("/twitter/:threatID", function(req,res){
+app.get("/twitter/:threatID", function(req,res){
     res.send("threat level: "+req.paramas['threatID'])
 })
 

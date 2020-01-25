@@ -7,10 +7,11 @@ const client = require('twilio')(accountSid, authToken);
 
 var num = '+447871239341';
 
-client.messages
-  .create({
-     body: 'Monkey loves you',
-     from: '+12014743543',
-     to: num
-   })
-  .then(message => console.log(message.sid));
+client.calls
+      .create({
+         twiml: '<Response><Say voice="alice">Hello, friend.</Say><Play></Play><Say voice="alice">Goodbye, friend.</Say></Response>',
+         //url: 'callTest.xml',
+		 from: '+12014743543',
+         to: num
+       })
+      .then(call => console.log(call.sid));

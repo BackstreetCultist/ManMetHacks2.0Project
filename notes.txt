@@ -10,3 +10,8 @@ bingbong
 @bigbrainhacks
 bigbrainshackingtheplanet@gmail.com
 bingbong
+
+TODO:
+Coffee Machine
+Server backend which saves twitter handles, phone numbers etc
+Convert twitter bot to run on server

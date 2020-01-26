@@ -41,7 +41,7 @@ app.get("/threaten/:threatID", function(req,res){
 		case '3':
 			client.calls
 			  .create({
-				 twiml: '<Response><Say voice="alice">Hello, friend.</Say><Play></Play><Say voice="alice">Goodbye, friend.</Say></Response>',
+				 twiml: '<Response><Say voice="alice">Hello, friend.</Say><Play>http://lookalivesunshine.tech/resources/interference.wav</Play><Say voice="alice">Goodbye, friend.</Say></Response>',
 				 from: '+12014743543',
 				 to: num
 			   })

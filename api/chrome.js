@@ -38,7 +38,7 @@ wss.on('connection', function (sock){
     console.log("incoming connection")
     sock.on('message', function xkcd(msg) {
         console.log("data: "+msg)
-        if (msg == "pi")
+        if (msg === "pi")
         {
             console.log("conencted to pi");
             pisocket = sock

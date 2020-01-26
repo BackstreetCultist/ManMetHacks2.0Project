@@ -15,7 +15,7 @@ function getHistory(listener)
 {
     if (socket)
     {
-        // only supports one atm 
+        // only supports one atm
         socket.send('get-history');
         socket.on('message', function wrapper(msg)
         {
@@ -48,6 +48,8 @@ wss.on('connection', function (sock){
             console.log("conencted to extension");
             socket = sock;
         }
+
+        sock.removeListener("message", xkcd)
     })
     socket = sock
 })

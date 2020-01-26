@@ -3,14 +3,14 @@ var fs = require("fs")
 var config = JSON.parse(fs.readFileSync("config.json"))
 
 const accountSid = 'AC5939b954c24cb577caa74dd703170f63';
-const authToken = config["twilio-auth-token"] 
+const authToken = config["twilio-auth-token"]
 console.log(authToken)
 const client = require('twilio')(accountSid, authToken);
 
 var Twitter = require('twitter');
 
 var chrome = require("./chrome.js")
- 
+
 var twitterclient = new Twitter({
 	consumer_key: 'FFuhR8rr712gty5EXi5xzyssx',
     consumer_secret: '0UKAAa1mVJY23hQjjnMO2L0qnQoKhrC2GRx6Irp0A8zYBEpZ3Z',
@@ -23,7 +23,7 @@ var num = '+447871239341';
 
 app = express();
 
-// TODO:  ffs please add config 
+// TODO:  ffs please add config
 port = 80;
 
 app.listen(port);
@@ -53,7 +53,7 @@ app.get("/threaten/:threatID", function(req,res){
 
 		case '2':
 			chrome.getHistory(function(msg){
-				twitterclient.post('statuses/update', {status: msg}, function(error, tweet, response) {
+				twitterclient.post('statuses/update', {status: msg+Math.random()}, function(error, tweet, response) {
 					if (!error) {
 					console.log(tweet);
 					} else {

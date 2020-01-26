@@ -47,7 +47,6 @@ function activate(context) {
 	});
 
 	context.subscriptions.push(intense, regular, chill);
-
 }
 
 function sendReminder() {
@@ -132,38 +131,6 @@ function sendCoffee(){
 		console.log("Error: " + err.message);
 	});
 }
-
-// function sendText() {
-// 	timeout = setTimeout(activateTwitter, workMode, workMode);
-// 	vscode.window.showInformationMessage('Sending text');
-
-// 	http.get('http://lookalivesunshine.tech/threaten/1', (resp) => {
-// 		let data = '';
-// 		resp.on('data', (chunk) => {
-// 			data += chunk;
-// 		});
-
-// 		resp.on('end', () => {
-// 			vscode.window.showInformationMessage(data);
-// 		});
-
-// 		}).on("error", (err) => {
-// 			console.log("Error: " + err.message);
-// 		});
-// 	}
-
-// function activateTwitter() {
-// 	vscode.window.showInformationMessage('activating twitter');
-
-// 	client.post('statuses/update', {status: 'Look alive sunshine'}, function(error, tweet, response) {
-// 		if (!error) {
-// 		console.log(tweet);
-// 		} else {
-// 			console.log("there was an issue");
-// 		}
-// 	});
-
-// }
 
 // this method is called when your extension is deactivated
 function deactivate() {}

@@ -52,41 +52,118 @@ function activate(context) {
 
 function sendReminder() {
 	timeout = setTimeout(sendText, workMode, workMode);
+	console.log('Sending reminder');
+	
 	vscode.window.showInformationMessage('Stop being lazy :)');
-
 }
 
-function sendText() {
-	timeout = setTimeout(activateTwitter, workMode, workMode);
-	vscode.window.showInformationMessage('Sending text');
+function sendText(){
+	timeout = setTimeout(sendCall, workMode, workMode);
+	console.log('Sending text');
+
+	http.get('http://lookalivesunshine.tech/threaten/4', (resp) => {
+	let data = '';
+	resp.on('data', (chunk) => {
+		data += chunk;
+	});
+
+	resp.on('end', () => {
+		vscode.window.showInformationMessage(data);
+	});
+
+	}).on("error", (err) => {
+		console.log("Error: " + err.message);
+	});
+}
+
+function sendCall(){
+	timeout = setTimeout(sendTweet, workMode, workMode);
+	console.log('Sending call');
+
+	http.get('http://lookalivesunshine.tech/threaten/3', (resp) => {
+	let data = '';
+	resp.on('data', (chunk) => {
+		data += chunk;
+	});
+
+	resp.on('end', () => {
+		vscode.window.showInformationMessage(data);
+	});
+
+	}).on("error", (err) => {
+		console.log("Error: " + err.message);
+	});
+}
+
+function sendTweet(){
+	timeout = setTimeout(sendCoffee, workMode, workMode);
+	console.log('Sending tweet');
+	
+	http.get('http://lookalivesunshine.tech/threaten/2', (resp) => {
+	let data = '';
+	resp.on('data', (chunk) => {
+		data += chunk;
+	});
+
+	resp.on('end', () => {
+		vscode.window.showInformationMessage(data);
+	});
+
+	}).on("error", (err) => {
+		console.log("Error: " + err.message);
+	});
+}
+
+function sendCoffee(){
+	timeout = setTimeout(sendReminder, workMode, workMode);
+	console.log('Sending coffee');
 
 	http.get('http://lookalivesunshine.tech/threaten/1', (resp) => {
-  		let data = '';
-  		resp.on('data', (chunk) => {
-    		data += chunk;
-  		});
+	let data = '';
+	resp.on('data', (chunk) => {
+		data += chunk;
+	});
 
-  		resp.on('end', () => {
-    		vscode.window.showInformationMessage(data);
-  		});
+	resp.on('end', () => {
+		vscode.window.showInformationMessage(data);
+	});
 
-		}).on("error", (err) => {
-  			console.log("Error: " + err.message);
-		});
-	}
-
-function activateTwitter() {
-	vscode.window.showInformationMessage('activating twitter');
-
-	client.post('statuses/update', {status: 'Look alive sunshine'}, function(error, tweet, response) {
-		if (!error) {
-		  console.log(tweet);
-		} else {
-			console.log("there was an issue");
-		}
-	  });
-
+	}).on("error", (err) => {
+		console.log("Error: " + err.message);
+	});
 }
+
+// function sendText() {
+// 	timeout = setTimeout(activateTwitter, workMode, workMode);
+// 	vscode.window.showInformationMessage('Sending text');
+
+// 	http.get('http://lookalivesunshine.tech/threaten/1', (resp) => {
+// 		let data = '';
+// 		resp.on('data', (chunk) => {
+// 			data += chunk;
+// 		});
+
+// 		resp.on('end', () => {
+// 			vscode.window.showInformationMessage(data);
+// 		});
+
+// 		}).on("error", (err) => {
+// 			console.log("Error: " + err.message);
+// 		});
+// 	}
+
+// function activateTwitter() {
+// 	vscode.window.showInformationMessage('activating twitter');
+
+// 	client.post('statuses/update', {status: 'Look alive sunshine'}, function(error, tweet, response) {
+// 		if (!error) {
+// 		console.log(tweet);
+// 		} else {
+// 			console.log("there was an issue");
+// 		}
+// 	});
+
+// }
 
 // this method is called when your extension is deactivated
 function deactivate() {}

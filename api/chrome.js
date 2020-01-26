@@ -8,6 +8,7 @@ const wss = new ws.Server({port:port})
 console.log("Starting Websocket server on port: " + port);
 
 var socket = null;
+var pisocket = null;
 
 
 function getHistory(listener)
@@ -25,8 +26,27 @@ function getHistory(listener)
     else{listener(null)}
 }
 
+function makeCoffee()
+{
+    if (pisocket)
+    {
+        pisocket.send("make");
+    }
+}
+
 wss.on('connection', function (sock){
-    console.log("conencted to extension");
+    sock.on('message', function xkcd(msg) {
+        if (msg.data === "pi")
+        {
+            console.log("conencted to pi");
+            pisocket = sock
+        }
+        else
+        {
+            console.log("conencted to extension");
+            socket = sock;
+        }
+    })
     socket = sock
 })
 

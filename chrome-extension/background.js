@@ -14,17 +14,24 @@ function setup(){
         })
     }
 
+    function onOpen(){
+        socket.send("extension")
+    }
+
     function retry() {
         socket.removeEventListener('message', handleMessage)
         socket.removeEventListener('error', retry)
         socket.removeEventListener('close', retry)
+        socket.removeEventListener('open', onOpen)
         socket = null
         setTimeout(setup, 2000);
     }
 
+
     socket.addEventListener('message', handleMessage);
     socket.addEventListener('error', retry);
     socket.addEventListener('close', retry);
+    socket.addEventListener('open', onOpen);
 }
 
 setup()

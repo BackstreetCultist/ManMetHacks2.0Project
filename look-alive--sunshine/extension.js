@@ -5,7 +5,8 @@ const http = require('http');
 var workMode = 5000;
 var timeout = setTimeout(sendReminder, workMode);
 var Twitter = require('twitter');
- 
+var cycles = 0;
+
 var client = new Twitter({
 	consumer_key: 'FFuhR8rr712gty5EXi5xzyssx',
     consumer_secret: '0UKAAa1mVJY23hQjjnMO2L0qnQoKhrC2GRx6Irp0A8zYBEpZ3Z',
@@ -53,7 +54,27 @@ function sendReminder() {
 	timeout = setTimeout(sendText, workMode, workMode);
 	console.log('Sending reminder');
 	
-	vscode.window.showInformationMessage('Stop being lazy :)');
+	switch(cycles){
+		case 0:
+			vscode.window.showInformationMessage('Look alive sunshine ;)');
+			break;
+		
+		case 1:
+			vscode.window.showInformationMessage('Stop being lazy :)');
+			break;
+
+		case 2:
+			vscode.window.showInformationMessage('What are you doing? :|');
+			break;
+
+		case 3:
+			vscode.window.showInformationMessage('Do some work :/');
+			break;
+		
+		default:
+			vscode.window.showInformationMessage('You bore me :(');
+			break;
+	}
 }
 
 function sendText(){
@@ -130,6 +151,8 @@ function sendCoffee(){
 	}).on("error", (err) => {
 		console.log("Error: " + err.message);
 	});
+
+	cycles++;
 }
 
 // this method is called when your extension is deactivated

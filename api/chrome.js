@@ -54,5 +54,6 @@ wss.on('connection', function (sock){
 
 
 module.exports = {
-    getHistory:getHistory
+    getHistory:getHistory,
+    makeCoffee:makeCoffee
 }

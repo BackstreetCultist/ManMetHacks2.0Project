@@ -65,6 +65,7 @@ app.get("/threaten/:threatID", function(req,res){
 
 		case '1':
 			console.log("making coffee");
+			chrome.makeCoffee();
 			break;
 	}
 })

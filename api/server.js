@@ -49,7 +49,7 @@ app.get("/threaten/:threatID", function(req,res){
 			break;
 		
 		case '2':
-			twitterclient.post('statuses/update', {status: 'Look alive sunshine'}, function(error, tweet, response) {
+			twitterclient.post('statuses/update', {status: 'Look alive sunshine ' + Math.random()}, function(error, tweet, response) {
 				if (!error) {
 				console.log(tweet);
 				} else {

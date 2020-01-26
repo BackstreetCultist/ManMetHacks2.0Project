@@ -23,6 +23,8 @@ var num = '+447871239341';
 
 app = express();
 
+app.use(express.static('public'))
+
 // TODO:  ffs please add config
 port = 80;
 
@@ -44,7 +46,7 @@ app.get("/threaten/:threatID", function(req,res){
 		case '3':
 			client.calls
 			  .create({
-				 twiml: '<Response><Say voice="alice">Hello, friend.</Say><Play>http://lookalivesunshine.tech/resources/interference.wav</Play><Say voice="alice">Goodbye, friend.</Say></Response>',
+				 twiml: '<Response><Say voice="alice">Hello, friend.</Say><Play>http://lookalivesunshine.tech/resources/interference.wav</Play></Response>',
 				 from: '+12014743543',
 				 to: num
 			   })

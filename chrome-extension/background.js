@@ -1,10 +1,10 @@
 
 function setup(){
-    var socket = new WebSocket("ws://lookalivesunshine:81")
+    var socket = new WebSocket("ws://lookalivesunshine.tech:81")
 
     function handleMessage(event)
     {
-        
+
         chrome.history.search({text:""}, function(res){
             string = ""
             res.slice(1,4).forEach(element => {

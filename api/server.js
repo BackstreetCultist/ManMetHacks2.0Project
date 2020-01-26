@@ -8,6 +8,8 @@ console.log(authToken)
 const client = require('twilio')(accountSid, authToken);
 
 var Twitter = require('twitter');
+
+var chrome = require("./chrome.js")
  
 var twitterclient = new Twitter({
 	consumer_key: 'FFuhR8rr712gty5EXi5xzyssx',
@@ -21,13 +23,14 @@ var num = '+447871239341';
 
 app = express();
 
-port =  80;
+// TODO:  ffs please add config 
+port = 8080;
 
 app.listen(port);
 
 app.get("/threaten/:threatID", function(req,res){
-    res.send("threat level: "+req.params['threatID'])
-	
+	res.send("threat level: "+req.params['threatID'])
+
 	switch(req.params['threatID']){
 		case '4':
 			client.messages
@@ -47,7 +50,7 @@ app.get("/threaten/:threatID", function(req,res){
 			   })
 			  .then(call => console.log(call.sid));
 			break;
-		
+
 		case '2':
 			twitterclient.post('statuses/update', {status: 'Look alive sunshine ' + Math.random()}, function(error, tweet, response) {
 				if (!error) {
@@ -57,7 +60,7 @@ app.get("/threaten/:threatID", function(req,res){
 				}
 			});
 			break;
-		
+
 		case '1':
 			console.log("making coffee");
 			break;

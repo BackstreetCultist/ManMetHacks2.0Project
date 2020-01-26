@@ -9,22 +9,24 @@ console.log("Starting Websocket server on port: " + port);
 
 var socket = null;
 
+
 function getHistory(listener)
 {
     if (socket)
     {
         // only supports one atm 
-        socket.send({'command':'get-history'});
-        socket.on('message', function(msg)
+        socket.send('get-history');
+        socket.on('message', function wrapper(msg)
         {
-            console.log(msg);
             listener(msg);
+            socket.removeListener('message', wrapper)
         });
     }
     else{listener(null)}
 }
 
 wss.on('connection', function (sock){
+    console.log("conencted to extension");
     socket = sock
 })
 

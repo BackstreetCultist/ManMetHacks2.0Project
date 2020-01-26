@@ -6,7 +6,7 @@ import websockets
 GPIO.setmode(GPIO.BCM)
 
 async def start():
-    uri = "ws://10.42.0.1:8081"
+    uri = "ws://lookalivesunshine:81"
     async with websockets.connect(uri) as websocket:
         await websocket.send("pi")
         await websocket.recv()

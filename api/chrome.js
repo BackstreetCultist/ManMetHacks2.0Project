@@ -2,7 +2,7 @@
 const ws = require("ws")
 
 // TODO: Add configuration pls I can't deal with this dumb shit
-const port = 8081
+const port = 81
 
 const wss = new ws.Server({port:port})
 console.log("Starting Websocket server on port: " + port);

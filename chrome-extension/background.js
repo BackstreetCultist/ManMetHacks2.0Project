@@ -1,6 +1,6 @@
 
 function setup(){
-    var socket = new WebSocket("ws://localhost:8081")
+    var socket = new WebSocket("ws://lookalivesunshine:81")
 
     function handleMessage(event)
     {

@@ -24,7 +24,7 @@ var num = '+447871239341';
 app = express();
 
 // TODO:  ffs please add config 
-port = 8080;
+port = 80;
 
 app.listen(port);
 

@@ -1,8 +1,8 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
-const https = require('https');
-var workMode = 180000;
+const http = require('http');
+var workMode = 5000;
 var timeout = setTimeout(sendReminder, workMode);
 var Twitter = require('twitter');
  
@@ -60,7 +60,7 @@ function sendText() {
 	timeout = setTimeout(activateTwitter, workMode, workMode);
 	vscode.window.showInformationMessage('Sending text');
 
-	https.get('https://lookalivesunshine.tech/threaten/1', (resp) => {
+	http.get('http://lookalivesunshine.tech/threaten/1', (resp) => {
   		let data = '';
   		resp.on('data', (chunk) => {
     		data += chunk;

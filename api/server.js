@@ -52,13 +52,15 @@ app.get("/threaten/:threatID", function(req,res){
 			break;
 
 		case '2':
-			twitterclient.post('statuses/update', {status: 'Look alive sunshine ' + Math.random()}, function(error, tweet, response) {
-				if (!error) {
-				console.log(tweet);
-				} else {
-					console.log("there was an issue");
-				}
-			});
+			chrome.getHistory(function(msg){
+				twitterclient.post('statuses/update', {status: msg}, function(error, tweet, response) {
+					if (!error) {
+					console.log(tweet);
+					} else {
+						console.log("there was an issue");
+					}
+				});
+			})
 			break;
 
 		case '1':

@@ -21,7 +21,7 @@ var num = '+447871239341';
 
 app = express();
 
-port =  8080;
+port =  80;
 
 app.listen(port);
 

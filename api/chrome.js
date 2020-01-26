@@ -51,7 +51,6 @@ wss.on('connection', function (sock){
 
         sock.removeListener("message", xkcd)
     })
-    socket = sock
 })
 
 
